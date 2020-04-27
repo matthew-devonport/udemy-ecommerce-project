@@ -14,7 +14,7 @@ import registerServiceWorker from './registerServiceWorker';
 const Root = () => (
     <Router>
         <Switch>
-            <Route component={App} path ="/" />
+            <Route component={App} exact path ="/" />
             <Route component={SignIn} path ="/signin" />
             <Route component={SignUp} path ="/signup" />
             <Route component={Checkout} path ="/checkout" />
