@@ -1,11 +1,14 @@
 import React from 'react';
-import { Box, Text } from 'gestalt'
+import { Box, Text, Heading } from 'gestalt'
 import { NavLink } from 'react-router-dom';
 
 const Navbar = () => (
     <Box
-    height = {70}
-    color = "midnight"
+    display="flex"
+    alignItems="center"
+    justifyContent="around"
+    height={100}
+    color="midnight"
     padding={1}
     shape="roundedBottom"
     >
@@ -14,6 +17,21 @@ const Navbar = () => (
     <NavLink to="/signin">
     <Text size="xl" color="white">Sign In</Text>
     </NavLink>    
+
+    {/* Title and Logo */}
+    <NavLink to="/">
+    <Heading 
+    size="xs"
+    color="orange">
+    BrewHaha    
+    </Heading>
+    </NavLink>  
+
+    {/* Sign Up Link */}
+    <NavLink to="/signup">
+    <Text size="xl" color="white">Sign Up</Text>
+    </NavLink>  
+
 
 
     </Box>
