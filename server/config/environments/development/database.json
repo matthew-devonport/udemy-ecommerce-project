@@ -1,0 +1,20 @@
+{
+  "defaultConnection": "default",
+  "connections": {
+    "default": {
+      "connector": "mongoose",
+      "settings": {
+        "database": "server",
+        "host": "cluster0-7ht0s.mongodb.net",
+        "srv": "true",
+        "port": 27017,
+        "username": "Matthew-Devonport",
+        "password": "GigabyteFanStop2020!"
+      },
+      "options": {
+        "authenticationDatabase": "",
+        "ssl": true
+      }
+    }
+  }
+}
