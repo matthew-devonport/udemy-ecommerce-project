@@ -14,12 +14,12 @@ const Navbar = () => (
     >
 
         {/* Sign In Link */}
-        <NavLink to="/signin">
+        <NavLink activeClassName="active" to="/signin">
             <Text size="xl" color="white">Sign In</Text>
         </NavLink>
 
         {/* Title and Logo */}
-<NavLink to="/">
+<NavLink activeClassName="active" exact to="/">
     <Box display="flex" alignItems="center">
         <Box
          margin={2}
@@ -41,7 +41,7 @@ const Navbar = () => (
 </NavLink>
 
         {/* Sign Up Link */}
-        <NavLink to="/signup">
+        <NavLink activeClassName="active" to="/signup">
             <Text size="xl" color="white">Sign Up</Text>
         </NavLink>
 
