@@ -1,8 +1,31 @@
 import React, { Component } from 'react';
 import { Container, Box, Heading } from 'gestalt'
 import './App.css';
+import Strapi from 'strapi-sdk-javascript/build/main'
+
+const apiUrl = process.env.API_URL || 'http://localhost:8082/'
+const strapi = new Strapi(apiUrl)
 
 class App extends Component {
+  async componentDidMount() {
+    const response = await strapi.request('POST', '/graphql', {
+      data: {
+        query: `query {
+          brands {
+            _id
+            name
+            Description
+            Image {
+              name
+              url
+            }
+          }
+        }`
+      }
+    })
+    console.log(response)
+  }
+
   render() {
     return (
       <Container>
