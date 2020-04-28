@@ -7,7 +7,13 @@ const apiUrl = process.env.API_URL || 'http://localhost:8082/'
 const strapi = new Strapi(apiUrl)
 
 class App extends Component {
+  state = {
+    brands: []
+  }
+
+
   async componentDidMount() {
+    try {
     const response = await strapi.request('POST', '/graphql', {
       data: {
         query: `query {
@@ -16,14 +22,16 @@ class App extends Component {
             name
             Description
             Image {
-              name
               url
             }
           }
         }`
       }
     })
-    console.log(response)
+    this.setState({ brands: response.data.brands})
+       } catch (err) {
+         console.error(err)
+       }
   }
 
   render() {
