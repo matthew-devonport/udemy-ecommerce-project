@@ -13,19 +13,20 @@
   "dependencies": {
     "strapi": "3.0.0-beta.20",
     "strapi-admin": "3.0.0-beta.20",
-    "strapi-utils": "3.0.0-beta.20",
-    "strapi-plugin-content-type-builder": "3.0.0-beta.20",
+    "strapi-connector-mongoose": "3.0.0-beta.20",
     "strapi-plugin-content-manager": "3.0.0-beta.20",
-    "strapi-plugin-users-permissions": "3.0.0-beta.20",
+    "strapi-plugin-content-type-builder": "3.0.0-beta.20",
     "strapi-plugin-email": "3.0.0-beta.20",
+    "strapi-plugin-graphql": "^3.0.0-beta.20",
     "strapi-plugin-upload": "3.0.0-beta.20",
-    "strapi-connector-mongoose": "3.0.0-beta.20"
+    "strapi-plugin-users-permissions": "3.0.0-beta.20",
+    "strapi-utils": "3.0.0-beta.20"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "0bb8ac31-d637-46ed-bdd5-435e46275b88"
+    "uuid": "e41f39ec-1f87-4f2a-aeaf-a333e7905f3a"
   },
   "engines": {
     "node": ">=10.0.0",
