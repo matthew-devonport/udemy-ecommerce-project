@@ -7,8 +7,10 @@ const apiUrl = process.env.API_URL || 'http://localhost:8082/'
 const strapi = new Strapi(apiUrl)
 
 class App extends Component {
-  async componentDidMount() {
 
+
+  
+  async componentDidMount() {
     try {
     const response = await strapi.request('POST', '/graphql', {
       data: {
@@ -18,7 +20,6 @@ class App extends Component {
             name
             Description
             Image {
-              name
               url
             }
           }
