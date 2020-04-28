@@ -8,6 +8,8 @@ const strapi = new Strapi(apiUrl)
 
 class App extends Component {
   async componentDidMount() {
+
+    try {
     const response = await strapi.request('POST', '/graphql', {
       data: {
         query: `query {
@@ -24,6 +26,9 @@ class App extends Component {
       }
     })
     console.log(response)
+       } catch (err) {
+         console.error(err)
+       }
   }
 
   render() {
