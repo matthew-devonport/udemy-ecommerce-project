@@ -53,7 +53,7 @@ class App extends Component {
         {/* Brands */}
         <Box display="flex" justifyContent="around">
           {brands.map(brand => (
-            <Box key={brand._id}>
+            <Box margin={2} width={200} key={brand._id}>
               <Card
               image={
                 <Box height={200} width={200}>
@@ -65,9 +65,11 @@ class App extends Component {
                  />
                 </Box>
               }>
-                <Text size="xl">{brand.name}</Text>
+                <Box display="flex" alignItems="center" justifyContent="center" direction="column">
+                <Text bold size="xl">{brand.name}</Text>
                 <Text>{brand.Description}</Text>
-                <Text size="xl"><Link to={`/${brand._id}`}>See Brews</Link></Text>
+                <Text bold size="xl"><Link to={`/${brand._id}`}>See Brews</Link></Text>
+                </Box>
               </Card>
             </Box>
 
