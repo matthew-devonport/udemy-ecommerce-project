@@ -61,6 +61,11 @@ class Brews extends React.Component {
         }
     }
 
+    deleteItemFromCart = itemToDeleteId => {
+        const filteredItems = this.state.cartItems.filter(item => item._id !== itemToDeleteId);
+        this.setState({ cartItems: filteredItems })
+    }
+
     render() {
         const { brand, brews, cartItems } = this.state
         return (
@@ -140,7 +145,8 @@ class Brews extends React.Component {
                              accessibilityLabel="Delete Item" 
                              icon="cancel"
                              size="sm"
-                             iconColor='red' />
+                             iconColor='red'
+                             onClick={() => this.deleteItemFromCart(item._id)} />
                             </Box> 
                         ))}
                         {/* Cart Items */}
