@@ -3,6 +3,7 @@ import { Container, Box, Heading, Card, Image, Text, SearchField, Icon, Spinner 
 import { Link } from 'react-router-dom'
 import './App.css';
 import Strapi from 'strapi-sdk-javascript/build/main'
+import Loader from './Loader'
 
 const apiUrl = process.env.API_URL || 'http://localhost:8082'
 const strapi = new Strapi(apiUrl)
@@ -115,7 +116,8 @@ class App extends Component {
             </Box>
           ))}
         </Box>
-        <Spinner show={loadingBrands} accessibilityLabel="Loading Spinner" />
+        {/* <Spinner show={loadingBrands} accessibilityLabel="Loading Spinner" /> */}
+        <Loader show={loadingBrands}/>
       </Container>
     );
   }
