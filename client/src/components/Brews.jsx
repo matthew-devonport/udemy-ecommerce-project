@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Strapi from 'strapi-sdk-javascript/build/main'
-import { Box, Heading, Text, Image, Card, Button, Mask } from 'gestalt'
+import { Box, Heading, Text, Image, Card, Button, Mask, IconButton } from 'gestalt'
 import { Link } from 'react-router-dom'
 
 const apiUrl = process.env.API_URL || 'http://localhost:8082'
@@ -46,17 +46,17 @@ class Brews extends React.Component {
     }
 
     addToCart = brew => {
-        const alreadyInCart = this.state.cartItems.findIndex(item => item._id === brew.id)
+        const alreadyInCart = this.state.cartItems.findIndex(item => item._id === brew._id)
 
         if (alreadyInCart === -1) {
             const updatedItems = this.state.cartItems.concat({ 
                 ...brew,
             quantity: 1
         })
-        this.setState({ cartItems: updatedItems})
+        this.setState({ cartItems: updatedItems })
         } else {
-            const updatedItems = [...this.state.cartItems]
-            updatedItems[alreadyInCart].quantity += 1
+            const updatedItems = [...this.state.cartItems];
+            updatedItems[alreadyInCart].quantity += 1;
             this.setState({ cartItems: updatedItems })
         }
     }
@@ -132,7 +132,18 @@ class Brews extends React.Component {
                         <Text color="gray" italic>
                             {cartItems.length} items selected
                         </Text>
-                        {/* Cart Items (will add) */}
+                        {cartItems.map(item => (
+                            <Box key={item.id} display="flex" alignItems="center">
+                             <Text>{item.name} x {item.quantity} - $ {(item.quantity * item.price).toFixed(2)}
+                             </Text>
+                             <IconButton 
+                             accessibilityLabel="Delete Item" 
+                             icon="cancel"
+                             size="sm"
+                             iconColor='red' />
+                            </Box> 
+                        ))}
+                        {/* Cart Items */}
                         <Box display="flex" alignItems="center" justifyContent="center" direction="column">
                         <Box margin={2}>{cartItems.length === 0 && (<Text color="red">Please select some items</Text>
                         )}
