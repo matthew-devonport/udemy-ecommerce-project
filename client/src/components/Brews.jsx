@@ -52,7 +52,13 @@ class Brews extends React.Component {
                 marginTop={4}
                 display="flex"
                 justifyContent="center"
-                alignItems="start">
+                alignItems="start"
+                dangerouslySetInlineStyle={{
+                    __style: {
+                        flexWrap: 'wrap-reverse'
+                    }
+                }}>
+                
 
                 {/* Brews Section */}
                 <Box display="flex" direction="column" alignItems="center">
@@ -102,7 +108,7 @@ class Brews extends React.Component {
                     </Box>
                 </Box>
                 {/* User Cart */}
-                <Box marginTop={2} marginLeft={8}>
+                <Box alignSelf="end" marginTop={2} marginLeft={8}>
                  <Mask shape="rounded" wash>
                      <Box display="flex" direction="column" alignItems="center" padding={2}>
                          {/* User Cart Heading */}
