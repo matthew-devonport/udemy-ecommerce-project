@@ -3,6 +3,7 @@ import React from 'react'
 import Strapi from 'strapi-sdk-javascript/build/main'
 import { Box, Heading, Text, Image, Card, Button, Mask, IconButton } from 'gestalt'
 import { Link } from 'react-router-dom'
+import { calculatePrice } from '../utils/index'
 
 const apiUrl = process.env.API_URL || 'http://localhost:8082'
 const strapi = new Strapi(apiUrl)
@@ -154,7 +155,7 @@ class Brews extends React.Component {
                         <Box margin={2}>{cartItems.length === 0 && (<Text color="red">Please select some items</Text>
                         )}
                         </Box>
-                        <Text size="lg">Total: $3.99</Text>
+                        <Text size="lg">Total: {calculatePrice(cartItems)}</Text>
                         <Text><Link to="/checkout">Checkout</Link></Text>
                         </Box>
                      </Box>
