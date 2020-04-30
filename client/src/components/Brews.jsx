@@ -46,7 +46,7 @@ class Brews extends React.Component {
     }
 
     render() {
-        const { brand, brews } = this.state
+        const { brand, brews, cartItems } = this.state
         return (
             <Box
                 marginTop={4}
@@ -100,6 +100,15 @@ class Brews extends React.Component {
                                 </Card>
                             </Box>))}
                     </Box>
+                </Box>
+                {/* User Cart */}
+                <Box marginTop={2} marginLeft={8}>
+                 <Mask shape="rounded" wash>
+                     <Box display="flex" direction="column" alignItems="center">
+
+                     </Box>
+                 </Mask>
+
                 </Box>
             </Box>
         )
