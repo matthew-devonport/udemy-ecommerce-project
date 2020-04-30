@@ -134,7 +134,7 @@ class Brews extends React.Component {
                  <Mask shape="rounded" wash>
                      <Box display="flex" direction="column" alignItems="center" padding={2}>
                          {/* User Cart Heading */}
-                         <Heading align="center" size="md">Your Cart</Heading>
+                         <Heading align="center" size="sm">Your Cart</Heading>
                         <Text color="gray" italic>
                             {cartItems.length} items selected
                         </Text>
