@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container, Box, Button, Heading, Text, TextField } from 'gestalt'
+import ToastMessage from './ToastMessage'
 
 
 class SignUp extends React.Component {
@@ -21,8 +22,10 @@ class SignUp extends React.Component {
 
         if (this.isFormEmpty(this.state)) {
             this.showToast('Fill in all fields')
-        console.log('submitted')
+            return
         }
+        console.log('submitted')
+ 
     }
 
      isFormEmpty = ({ username, email, password}) => {
@@ -37,6 +40,7 @@ class SignUp extends React.Component {
 
     
     render() {
+        const {toastMessage, toast} = this.state
         return (
             <Container>
                 <Box
@@ -103,7 +107,7 @@ class SignUp extends React.Component {
                     </form>
 
                 </Box>
-
+                <ToastMessage show={toast} message={toastMessage}/>
             </Container>
         )
 
