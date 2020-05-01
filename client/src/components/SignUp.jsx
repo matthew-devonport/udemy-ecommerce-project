@@ -13,6 +13,19 @@ class SignUp extends React.Component {
         event.persist()
         this.setState({ [event.target.name]: value})
     }
+
+    handleSubmit = event => {
+        event.preventDefault()
+
+        if (!this.isFormEmpty(this.state)) {
+        console.log('submitted')
+        }
+    }
+
+     isFormEmpty = ({ username, email, password}) => {
+      return !username || !email || !password
+     }  
+    
     render() {
         return (
             <Container>
@@ -34,7 +47,9 @@ class SignUp extends React.Component {
                         display: 'inlineBlock',
                         textAlign: 'center',
                         maxwidth: 450
-                    }}>
+                    }}
+                    onSubmit={this.handleSubmit}
+                    >
                         {/* Sign Up Form Heading */}
                         <Box
                             marginBottom={2}
