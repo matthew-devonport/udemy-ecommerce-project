@@ -6,7 +6,9 @@ class SignUp extends React.Component {
     state = {
         username: '',
         email: '',
-        password: ''
+        password: '',
+        toast: false,
+        toastMessage: ''
     }
 
     handleChange = ({event, value}) => {
@@ -17,14 +19,22 @@ class SignUp extends React.Component {
     handleSubmit = event => {
         event.preventDefault()
 
-        if (!this.isFormEmpty(this.state)) {
+        if (this.isFormEmpty(this.state)) {
+            this.showToast('Fill in all fields')
         console.log('submitted')
         }
     }
 
      isFormEmpty = ({ username, email, password}) => {
       return !username || !email || !password
-     }  
+     }
+     
+    showToast = toastMessage  => {
+        this.setState({ toast: true, toastMessage})
+        setTimeout(() => this.setState({ toast: false, toastMessage: ''}), 5000)
+
+    }
+
     
     render() {
         return (
