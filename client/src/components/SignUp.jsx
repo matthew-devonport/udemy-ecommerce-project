@@ -1,6 +1,8 @@
 import React from 'react'
 import { Container, Box, Button, Heading, Text, TextField } from 'gestalt'
 import ToastMessage from './ToastMessage'
+import { setToken } from '../utils/index'
+
 import Strapi from 'strapi-sdk-javascript/build/main'
 
 const apiUrl = process.env.API_URL || 'http://localhost:8082'
@@ -62,7 +64,7 @@ class SignUp extends React.Component {
 
     
     render() {
-        const {toastMessage, toast} = this.state
+        const {toastMessage, toast, loading} = this.state
         return (
             <Container>
                 <Box
@@ -122,6 +124,7 @@ class SignUp extends React.Component {
                         />
                         <Button
                             inline
+                            disabled={loading}
                             color='blue'
                             text="Submit"
                             type="submit"
