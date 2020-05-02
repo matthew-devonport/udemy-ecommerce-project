@@ -24,7 +24,19 @@ class SignUp extends React.Component {
             this.showToast('Fill in all fields')
             return
         }
-        console.log('submitted')
+    //    Sign up user 
+    try {
+        // set loading - true 
+        // make request to register user with strapi 
+        // set loading false 
+        // put token (to manage uder session) in local storage 
+        // redirect user to home page 
+
+    } catch (err) {
+        // set loading to false
+        // show error message with toast message
+
+    }
  
     }
 
