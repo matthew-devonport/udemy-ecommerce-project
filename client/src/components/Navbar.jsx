@@ -28,8 +28,8 @@ const AuthNav = ( {handleSignout}) => (
     >
 
         {/* Checkout link */}
-        <NavLink activeClassName="active" to="/signin">
-            <Text size="xl" color="white">Sign In</Text>
+        <NavLink activeClassName="active" to="/checkout">
+            <Text size="xl" color="white">Checkout</Text>
         </NavLink>
 
         {/* Title and Logo */}
