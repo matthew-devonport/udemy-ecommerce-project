@@ -3,8 +3,17 @@ import { Box, Text, Heading, Image, Button } from 'gestalt'
 import { getToken } from '../utils/index'
 import { NavLink } from 'react-router-dom';
 
-const Navbar = () => {
-    return getToken() !== null ? <AuthNav /> : <UnAuthNav />
+class Navbar extends React.Component {
+
+    handleSignout = () => {
+        // clear token
+        // clear cart
+        // redirect home
+    }
+
+    render() {
+        return getToken() !== null ? <AuthNav /> : <UnAuthNav />
+    }
 }
 
 const AuthNav = () => (
@@ -46,7 +55,7 @@ const AuthNav = () => (
         </NavLink>
 
         {/* Signout button */}
-        <Button color="transparent" text="Sign Out" inline size="md"/>
+        <Button color="transparent" text="Sign Out" inline size="md" />
     </Box>
 )
 
