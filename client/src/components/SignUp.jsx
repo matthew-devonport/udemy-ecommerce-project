@@ -1,6 +1,12 @@
 import React from 'react'
 import { Container, Box, Button, Heading, Text, TextField } from 'gestalt'
 import ToastMessage from './ToastMessage'
+import { setToken } from '../utils/index'
+
+import Strapi from 'strapi-sdk-javascript/build/main'
+
+const apiUrl = process.env.API_URL || 'http://localhost:8082'
+const strapi = new Strapi(apiUrl)
 
 
 class SignUp extends React.Component {
@@ -9,7 +15,8 @@ class SignUp extends React.Component {
         email: '',
         password: '',
         toast: false,
-        toastMessage: ''
+        toastMessage: '',
+        loading: false
     }
 
     handleChange = ({event, value}) => {
@@ -17,16 +24,33 @@ class SignUp extends React.Component {
         this.setState({ [event.target.name]: value})
     }
 
-    handleSubmit = event => {
+    handleSubmit = async event => {
         event.preventDefault()
+        const { username, email, password } = this.state
 
         if (this.isFormEmpty(this.state)) {
             this.showToast('Fill in all fields')
             return
         }
-        console.log('submitted')
+    //    Sign up user 
+    try {
+        this.setState({ loading: true });
+        const response = await strapi.register(username, email, password);
+        this.setState({ loading: false})
+        setToken(response.jwt)
+        console.log(response)
+        this.redirectUser('/')
+
+    } catch (err) {
+        this.setState({ loading: false})
+        this.showToast(err.message)
+
+    }
  
     }
+
+    redirectUser = path => this.props.history.push(path)
+
 
      isFormEmpty = ({ username, email, password}) => {
       return !username || !email || !password
@@ -40,7 +64,7 @@ class SignUp extends React.Component {
 
     
     render() {
-        const {toastMessage, toast} = this.state
+        const {toastMessage, toast, loading} = this.state
         return (
             <Container>
                 <Box
@@ -100,6 +124,7 @@ class SignUp extends React.Component {
                         />
                         <Button
                             inline
+                            disabled={loading}
                             color='blue'
                             text="Submit"
                             type="submit"
