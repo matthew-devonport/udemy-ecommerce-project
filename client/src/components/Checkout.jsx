@@ -12,6 +12,8 @@ class Checkout extends React.Component {
         confirmationEmailAddress: '',
         toast: false,
         toastMessage: '',
+        orderProcessing: false,
+        modal: false
     }
 
     componentDidMount() {
@@ -33,6 +35,8 @@ class Checkout extends React.Component {
         }
     }
 
+    handleSubmitOrder = () => {}
+
     isFormEmpty = ({ address, postalCode, city, confirmationEmailAddress }) => {
         return !address || !postalCode || !city || !confirmationEmailAddress
     }
@@ -43,8 +47,10 @@ class Checkout extends React.Component {
 
     }
 
+    closeModal = () =>  this.setState({ modal: false })
+
     render() {
-        const { toast, toastMessage, cartItems } = this.state
+        const { toast, toastMessage, cartItems, modeal, orderProcessing } = this.state
         return (
             <Container>
                 <Box
