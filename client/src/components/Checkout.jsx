@@ -1,5 +1,7 @@
 import React from 'react'
 import { Container, Box, Button, Heading, Text, TextField, Modal, Spinner } from 'gestalt'
+import { Elements, StripeProvider, CardElement, injectStripe } from 'react-stripe-elements'
+
 import ToastMessage from './ToastMessage'
 import { getCart, calculatePrice } from '../utils'
 
