@@ -1,5 +1,9 @@
+
+"use sctrict";
 // Goes at top of file
-const stripe = require('stripe')(sk_test_BOdVKRcpHlO47qzBZXRDK5D200ei8jZsqL);
+const stripe = require("stripe")("sk_test_BOdVKRcpHlO47qzBZXRDK5D200ei8jZsqL");
+
+module.exports = {
 
 create: async ctx => {
   const {
@@ -30,4 +34,5 @@ create: async ctx => {
   });
 
   return order;
+}
 }
