@@ -3,7 +3,7 @@ import { Container, Box, Button, Heading, Text, TextField, Modal, Spinner } from
 import { Elements, StripeProvider, CardElement, injectStripe } from 'react-stripe-elements'
 
 import ToastMessage from './ToastMessage'
-import { getCart, calculatePrice } from '../utils'
+import { getCart, calculatePrice, clearCart, calculateAmount } from '../utils'
 
 class _CheckoutForm extends React.Component {
     state = {
@@ -39,7 +39,23 @@ class _CheckoutForm extends React.Component {
         this.setState({ modal: true })
     }
 
-    handleSubmitOrder = () => {}
+    handleSubmitOrder = () => {
+        const {cartItems, city, address, postalCode} = this.state
+
+        // Process order
+        this.setState({ orderProcessing: true })
+        let token;
+        try {
+        // create stripe token
+        // create order with strapi sdk (make request to backend)
+        // set orderProcessing - false, set modal - false
+        // clear user cart of brews
+        // show success toast
+        } catch (err) {
+        // set order processing - false, modal - false
+        // show error toast
+        }
+    }
 
     isFormEmpty = ({ address, postalCode, city, confirmationEmailAddress }) => {
         return !address || !postalCode || !city || !confirmationEmailAddress
