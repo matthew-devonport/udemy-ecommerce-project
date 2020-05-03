@@ -1,7 +1,7 @@
 
 "use sctrict";
 // Goes at top of file
-const stripe = require("stripe")("sk_test_BOdVKRcpHlO47qzBZXRDK5D200ei8jZsqL");
+const stripe = require('stripe')('sk_test_BOdVKRcpHlO47qzBZXRDK5D200ei8jZsqL');
 
 module.exports = {
 
@@ -24,7 +24,7 @@ create: async ctx => {
   });
 
   // Create order in database
-  const order = await strapi.services.orders.add({
+  const order = await strapi.api.orders.services.orders.create({
     user: ctx.state.user._id,
     address,
     amount,
