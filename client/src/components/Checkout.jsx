@@ -1,9 +1,11 @@
 import React from 'react'
 import { Container, Box, Button, Heading, Text, TextField, Modal, Spinner } from 'gestalt'
-import ToastMessage from './ToastMessage'
-import { getCart, calculatePrice } from '../utils'
+import { Elements, StripeProvider, CardElement, injectStripe } from 'react-stripe-elements'
 
-class Checkout extends React.Component {
+import ToastMessage from './ToastMessage'
+import { getCart, calculatePrice, clearCart, calculateAmount } from '../utils'
+
+class _CheckoutForm extends React.Component {
     state = {
         cartItems: [],
         address: '',
@@ -37,7 +39,23 @@ class Checkout extends React.Component {
         this.setState({ modal: true })
     }
 
-    handleSubmitOrder = () => {}
+    handleSubmitOrder = () => {
+        const {cartItems, city, address, postalCode} = this.state
+
+        // Process order
+        this.setState({ orderProcessing: true })
+        let token;
+        try {
+        // create stripe token
+        // create order with strapi sdk (make request to backend)
+        // set orderProcessing - false, set modal - false
+        // clear user cart of brews
+        // show success toast
+        } catch (err) {
+        // set order processing - false, modal - false
+        // show error toast
+        }
+    }
 
     isFormEmpty = ({ address, postalCode, city, confirmationEmailAddress }) => {
         return !address || !postalCode || !city || !confirmationEmailAddress
@@ -131,6 +149,8 @@ class Checkout extends React.Component {
                             placeholder="Confirmation Email Address"
                             onChange={this.handleChange}
                         />
+                        {/* Credit Card Element */}
+                        <CardElement id="stripe__input" onReady={input => input.focus()} />
                         <button id="stripe__button" type="submit">Submit</button>
                     </form>
                     </React.Fragment>
@@ -211,6 +231,17 @@ const ConfirmatonModal = ({orderProcessing, cartItems, closeModal, handleSubmitO
     <Spinner show={orderProcessing} accessibilityLabel="Order Processing Spinner" />
     {orderProcessing && <Text align="center" italic>Submitting Order....</Text>}
     </Modal>
+)
+
+const CheckoutForm = injectStripe(_CheckoutForm)
+
+const Checkout = () => (
+    <StripeProvider apiKey="pk_test_F92R0PypgxxkAKVgMt7pH3Og00RQXrWC3T">
+        <Elements>
+            <CheckoutForm />
+        </Elements>
+
+    </StripeProvider>
 )
 
 export default Checkout;
